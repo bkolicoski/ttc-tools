@@ -25,14 +25,8 @@ class YouTubeSightController extends Controller
                 if ($channel) {
                     $client = $this->getGoogleClient();
                     $client->setAccessToken(session('access_token'));
-                    $youtube = new Google_Service_YouTubeAnalytics($client);
-                    $report = $youtube->reports->query([
-                        'ids' => 'channel==MINE',
-                        'metrics' => 'views,subscribersGained,subscribersLost,estimatedMinutesWatched,averageViewDuration',
-                        'startDate' => $channel['published_at']->format('Y-m-d'),
-                        'endDate' => Carbon::now()->format('Y-m-d')
-                    ]);
-                    return view('youtube-sight.stats', ['data' => $report->getRows()[0]]);
+                    $data = $this->getAnalyticsApiData($client, $channel);
+                    return view('youtube-sight.stats', ['data' => $data]);
                 }
                 session()->flush();
                 return redirect()->route('youtube-sight.index')->with('error', 'Unknown channel. Please try again.');
@@ -41,6 +35,41 @@ class YouTubeSightController extends Controller
             return redirect()->route('youtube-sight.index')->with('error', $access_token['error_description']);
         }
         return view('youtube-sight.index');
+    }
+
+    /**
+     * @param string $guid
+     *
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * @throws \Google_Exception
+     */
+    public function apiIndex(string $guid)
+    {
+        $channel = YouTubeChannel::where('api_access_key', $guid)->first();
+        if ($channel) {
+            $client = $this->getGoogleClient();
+            $access_token = $client->fetchAccessTokenWithRefreshToken($channel['access_token']['refresh_token']);
+            if (!isset($access_token['error'])) {
+                $channel['access_token'] = $access_token;
+                $channel->save();
+                $data = $this->getAnalyticsApiData($client, $channel);
+                if(request()->expectsJson()) {
+                    return response()->json([
+                        'views' => $data[0],
+                        'subscribers_gained' => $data[1],
+                        'subscribers_lost' => $data[2],
+                        'subscribers_count' => $data[1] - $data[2],
+                        'estimated_minutes_watched' => $data[3],
+                        'average_view_duration' => (int)($data[4]/60) . ':' . $data[4]%60
+                    ]);
+                }
+                $data[4] = (int)($data[4]/60) . ':' . $data[4]%60;
+                array_splice( $data, 3, 0, $data[1] - $data[2]);
+                return response(join(',', $data));
+            }
+            return response('There was an error authenticating the request. Please visit the app UI at ' . config('app.url') . ' to login again!', 401);
+        }
+        return response('The specified channel can not be found.', 404);
     }
 
     /**
@@ -120,4 +149,22 @@ class YouTubeSightController extends Controller
             'published_at' => $data[0]['snippet']['publishedAt']
         ];
     }
+
+    /**
+     * @param \Google_Client $client
+     * @param $channel
+     *
+     * @return array
+     */
+    private function getAnalyticsApiData(Google_Client $client, $channel): array
+    {
+        $youtube = new Google_Service_YouTubeAnalytics($client);
+        $data = $youtube->reports->query([
+            'ids' => 'channel==MINE',
+            'metrics' => 'views,subscribersGained,subscribersLost,estimatedMinutesWatched,averageViewDuration',
+            'startDate' => $channel['published_at']->format('Y-m-d'),
+            'endDate' => Carbon::now()->format('Y-m-d')
+        ]);
+        return $data->getRows()[0];
+}
 }
