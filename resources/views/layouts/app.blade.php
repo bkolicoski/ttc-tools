@@ -27,7 +27,7 @@
                 <div class="relative text-sm text-gray-100 px-2 pt-1">
                     <a href="https://www.tastethecode.com">Main Site</a>
                 </div>
-                <div class="block lg:hidden pr-4">
+                <div class="block md:hidden pr-4">
                     <button id="nav-toggle"
                             class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-100 hover:border-teal-500 appearance-none focus:outline-none">
                         <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>
@@ -41,9 +41,9 @@
         </div>
 
 
-        <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-gray-900 z-20"
+        <div class="w-full flex-grow md:flex md:items-center md:w-auto hidden md:block mt-2 md:mt-0 bg-gray-900 z-20"
              id="nav-content">
-            <ul class="list-reset lg:flex flex-1 items-center px-4 md:px-0">
+            <ul class="list-reset md:flex flex-1 items-center px-4 md:px-0">
                 <li class="mr-6 my-2 md:my-0">
                     <a href="/"
                        class="block py-1 md:py-3 pl-1 align-middle no-underline hover:text-gray-100 border-b-2 {{ request()->is('/') ? 'text-blue-400 border-blue-400' : 'text-gray-500 border-gray-900'  }} hover:border-blue-400">
@@ -73,16 +73,16 @@
             <div class="flex w-full md:w-1/2 ">
                 <div class="px-4">
                     <h3 class="font-bold font-bold text-gray-100">About Me</h3>
-                    <p class="py-4 text-gray-600 text-sm">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel mi ut felis tempus commodo
-                        nec id erat. Suspendisse consectetur dapibus velit ut lacinia.
+                    <p class="py-2 text-gray-600 text-sm">
+                        I’m a software developer with a passion for making and electronics. I run a YouTube channel called
+                        <a  class="text-blue-400 hover:text-blue-600" href="https://www.youtube.com/tastethecode">Taste The Code</a> where I post new videos every week. Check out the links to my social pages to see what I do. If you like what you see, consider <a class="text-blue-400 hover:text-blue-600" href="https://www.paypal.com/paypalme2/bkolicoski">buying me a beer</a>.
                     </p>
                 </div>
             </div>
             <div class="flex w-full md:w-1/2">
                 <div class="px-4">
                     <h3 class="font-bold font-bold text-gray-100">Find me elsewhere</h3>
-                    <ul class="list-reset inline-block py-4">
+                    <ul class="list-reset inline-block py-2">
                         <li class="inline p-2 pl-0 md:p-1 md:pl-0">
                             <a href="https://www.youtube.com/tastethecode" title="YouTube">
                             <span class="fa-stack fa-lg">
