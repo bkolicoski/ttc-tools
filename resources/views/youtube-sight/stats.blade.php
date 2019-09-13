@@ -104,5 +104,41 @@
             </div>
             <!--/Metric Card-->
         </div>
+
+        <div class="px-3 w-full mt-4">
+            <div class="w-full mx-auto border rounded-lg bg-gray-600 p-4 text-white">
+                API Access URL: <span class="font-bold">{{ route('api.youtube-sight.index', ['guid' => $channel['api_access_key']])  }}</span>
+            </div>
+        </div>
+
+        <div class="w-full md:w-1/2 p-4 mt-4">
+            <p class="mb-4">You can use the URL above with your subscriber counter to get the data from this page to your device. Full examples for usage with Arduino can be found in the example repository on GitHub.</p>
+
+            <p class="mb-4">This URL is only visible to you but if you choose to share it with anyone, others will be able to see the same data as you so treat it as you wish.</p>
+
+            <p class="mb-4">On the right side, there are examples of the two success responses that you can get, one as plain text and the other as JSON. To get the JSON response, you need to specify the “Accept” header in your request to “application/json”.</p>
+
+            <p class="mb-4">The text response order of the parameters is as follows:<br>
+                views, subscribers_gained, subscribers_lost, subscribers_count, estimated_minutes_watched, average_view_duration
+            </p>
+        </div>
+        <div class="w-full md:w-1/2 p-4 mt-4">
+            <p>Text Response</p>
+            <pre class="mb-4">57559,609,67,542,106322,1:50</pre>
+            <p>JSON Response</p>
+            <pre class="mb-4">{
+    "views": 57559,
+    "subscribers_gained": 609,
+    "subscribers_lost": 67,
+    "subscribers_count": 542,
+    "estimated_minutes_watched": 106322,
+    "average_view_duration": "1:50"
+}</pre>
+        </div>
+
+        <div class="w-full text-sm p-4 mb-4">
+            ** Because of the way the YouTube Analytics API works and
+            <a class="text-blue-400 hover:text-blue-600" href="https://stackoverflow.com/questions/13018142/latency-with-youtube-analytics-api" target="_blank">aggregates data</a>, the stats displayed are usually delayed by at least one day and do not represent the real time situation from YouTube Creator Studio.
+        </div>
     </div>
 @endsection

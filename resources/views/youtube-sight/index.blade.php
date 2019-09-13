@@ -26,6 +26,6 @@
         </a>
 
         <p class="text-sm">* This tool does not collect or keep your data in any way. The data is retrieved and immediately relayed to you for your own use. <br> ** Because of the way the YouTube Analytics API works and
-            <a class="text-blue-400 hover:text-blue-600" href="https://stackoverflow.com/questions/13018142/latency-with-youtube-analytics-api" target="_blank">aggregates data</a>, the stats displayed are usually delayed by one day and do not represent the real time situation from YouTube Creator Studio. </p>
+            <a class="text-blue-400 hover:text-blue-600" href="https://stackoverflow.com/questions/13018142/latency-with-youtube-analytics-api" target="_blank">aggregates data</a>, the stats displayed are usually delayed by at least one day and do not represent the real time situation from YouTube Creator Studio. </p>
     </div>
 @stop

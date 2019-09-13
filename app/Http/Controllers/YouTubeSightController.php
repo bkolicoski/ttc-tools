@@ -26,7 +26,10 @@ class YouTubeSightController extends Controller
                     $client = $this->getGoogleClient();
                     $client->setAccessToken(session('access_token'));
                     $data = $this->getAnalyticsApiData($client, $channel);
-                    return view('youtube-sight.stats', ['data' => $data]);
+                    return view('youtube-sight.stats', [
+                        'channel' => $channel,
+                        'data' => $data
+                    ]);
                 }
                 session()->flush();
                 return redirect()->route('youtube-sight.index')->with('error', 'Unknown channel. Please try again.');
