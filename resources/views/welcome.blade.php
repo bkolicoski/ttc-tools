@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="w-full md:w-3/4 mx-auto pt-4 lg:pt-8 text-lg text">
+    <div class="w-full md:w-3/4 mx-auto pt-4 lg:pt-8 text">
         <p class="mb-4">TTC Toolbox is a collection of free and open-source tools that I’ve created as a contribution to the community for solutions to common problems I had.</p>
 
         <p class="mb-4">All of the tools here are provided as is, free of charge and without warranty. All the code is available on <a

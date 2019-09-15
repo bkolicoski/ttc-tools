@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="text-center">
+    <div class="text-center w-full md:w-3/4 mx-auto">
         <h1 class="text-youtube-red font-bold text-4xl md:text-6xl mt-4 md:mt-16 mb-8">Sight for YouTube</h1>
         <p class="mb-4">YouTube Sight is an application that connects with the YouTube Analytics API to provide you with a service that can extract detailed subscribers data for your channel.</p>
 
