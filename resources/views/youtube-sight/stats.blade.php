@@ -5,7 +5,16 @@
 @endsection
 
 @section('content')
-    <div class="flex flex-wrap pt-0 md:pt-6">
+    <div class="flex flex-wrap pt-0">
+        <div class="flex w-full p-3">
+            <div class="text-left w-1/2">
+                Connected channel: <strong>{{ $channel['name'] }}</strong>
+            </div>
+            <div class="text-right w-1/2">
+                <a href="{{ route('youtube-sight.logout') }}" class="underline hover:no-underline mr-3">Logout</a>
+            </div>
+
+        </div>
         <div class="w-full md:w-1/2 xl:w-1/3 p-3 ">
             <!--Metric Card-->
             <div class="bg-gray-900 border border-gray-800 rounded shadow p-2">
@@ -134,6 +143,11 @@
     "estimated_minutes_watched": 106322,
     "average_view_duration": "1:50"
 }</pre>
+        </div>
+
+        <div class="w-full text-center p-3 bg-red-200 m-3">
+            <p>Disconnecting a channel will terminate access to the YouTube Sight API, remove the permissions granted to use the YouTube Analytics API and delete all records.</p>
+            <a href="{{ route('youtube-sight.disconnect') }}" onclick="return confirm('Do you really want to disconnect this channel?')" class="underline hover:no-underline">Remove channel</a>
         </div>
 
         <div class="w-full text-sm p-4 mb-4">

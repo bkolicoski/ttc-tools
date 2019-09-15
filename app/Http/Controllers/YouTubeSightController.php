@@ -86,6 +86,15 @@ class YouTubeSightController extends Controller
     }
 
     /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function logout()
+    {
+        session()->flush();
+        return redirect()->route('youtube-sight.index');
+    }
+
+    /**
      * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\RedirectResponse
@@ -116,6 +125,33 @@ class YouTubeSightController extends Controller
             return redirect()->route('youtube-sight.index')->with('error', $token['error_description']);
         }
         dd($request->all());
+    }
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Google_Exception
+     */
+    public function disconnect()
+    {
+        $access_token = session('access_token', null);
+        if ($access_token != null) {
+            if (!isset($access_token['error'])) {
+                $channel = YouTubeChannel::where('channel_id', session('channel_id'))->first();
+                if ($channel) {
+                    $client = $this->getGoogleClient();
+                    $client->setAccessToken(session('access_token'));
+                    $client->revokeToken(session('access_token'));
+                    $channel->delete();
+                    session()->flush();
+                    return redirect()->route('youtube-sight.index')->with('success', 'Your channel was removed.');
+                }
+                session()->flush();
+                return redirect()->route('youtube-sight.index')->with('error', 'Unknown channel. Please try again.');
+            }
+            session()->flush();
+            return redirect()->route('youtube-sight.index')->with('error', $access_token['error_description']);
+        }
+        return redirect()->route('youtube-sight.index')->with('error', 'You need to be logged in to disconnect a channel.');
     }
 
     /**

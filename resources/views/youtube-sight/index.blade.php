@@ -19,6 +19,11 @@
                 {{ session('error') }}
             </div>
         @endif
+        @if (session('success'))
+            <div class="bg-green-200 my-6">
+                {{ session('success') }}
+            </div>
+        @endif
 
         <a href="{{ route('youtube-sight.login') }}" class="bg-gray-100 hover:bg-blue-200 text-gray-800 font-bold px-4 rounded-lg inline-flex items-center mt-10 mb-4 shadow-lg focus:outline-none focus:shadow-outline">
             <i class="fab fa-youtube fill-current m-2 mr-4 text-youtube-red text-6xl"></i>
