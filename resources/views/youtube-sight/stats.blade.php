@@ -121,7 +121,7 @@
         </div>
 
         <div class="w-full md:w-1/2 p-4 mt-4">
-            <p class="mb-4">You can use the URL above with your subscriber counter to get the data from this page to your device. Full examples for usage with Arduino can be found in the example repository on GitHub.</p>
+            <p class="mb-4">You can use the URL above with your subscriber counter to get the data from this page to your device. Full examples for usage with Arduino can be found in the <a href="https://github.com/bkolicoski/youtube-sight-example" class="underline hover:no-underline" target="_blank">example repository on GitHub</a>.</p>
 
             <p class="mb-4">This URL is only visible to you but if you choose to share it with anyone, others will be able to see the same data as you so treat it as you wish.</p>
 

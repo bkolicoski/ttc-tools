@@ -17,7 +17,7 @@ Below is a list of all of the tools available
 
 YouTube Sight is an application that connects with the YouTube Analytics API to provide you with a service that can extract detailed subscribers data for your channel. 
 
-After the [announcement](https://support.google.com/youtube/thread/6543166?msgid=13119244) from YouTube that they will no longer provide real-time data for subscribers count and the [constatation](https://www.youtube.com/watch?v=sHNI-WgN-UQ) that all of the subscribers counters built will no longer work I’ve built this gateway that once you authorize it, it gives you an API endpoint that you can call from your project and retrieve the subscriber count. Check out the examples repository for examples on how you can use it.
+After the [announcement](https://support.google.com/youtube/thread/6543166?msgid=13119244) from YouTube that they will no longer provide real-time data for subscribers count and the [constatation](https://www.youtube.com/watch?v=sHNI-WgN-UQ) that all of the subscribers counters built will no longer work I’ve built this gateway that once you authorize it, it gives you an API endpoint that you can call from your project and retrieve the subscriber count. Check out the [examples repository](https://github.com/bkolicoski/youtube-sight-example) for examples on how you can use it.
 
 ## Contributing
 
