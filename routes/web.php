@@ -13,9 +13,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PagesController@welcome');
 
 Route::group(['as' => 'youtube-sight.', 'prefix' => 'youtube-sight'], function () {
     Route::get('/', 'YouTubeSightController@index')->name('index');
