@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['as' => 'youtube-sight.', 'prefix' => 'youtube-sight'], function () {
+Route::group(['scheme' => 'https','as' => 'youtube-sight.', 'prefix' => 'youtube-sight'], function () {
     Route::get('/', 'YouTubeSightController@index')->name('index');
     Route::get('/login', 'YouTubeSightController@login')->name('login');
     Route::get('/logout', 'YouTubeSightController@logout')->name('logout');
