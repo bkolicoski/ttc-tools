@@ -17,6 +17,7 @@ Route::get('/', 'PagesController@welcome');
 
 Route::group(['as' => 'youtube-sight.', 'prefix' => 'youtube-sight'], function () {
     Route::get('/', 'YouTubeSightController@index')->name('index');
+    Route::get('/privacy-policy', 'YouTubeSightController@privacy')->name('privacy-policy');
     Route::get('/login', 'YouTubeSightController@login')->name('login');
     Route::get('/logout', 'YouTubeSightController@logout')->name('logout');
     Route::get('/auth', 'YouTubeSightController@auth')->name('auth');

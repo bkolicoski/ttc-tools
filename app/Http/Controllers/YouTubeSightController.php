@@ -41,6 +41,14 @@ class YouTubeSightController extends Controller
     }
 
     /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function privacy()
+    {
+        return view('youtube-sight.privacy-policy');
+    }
+
+    /**
      * @param string $guid
      *
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
