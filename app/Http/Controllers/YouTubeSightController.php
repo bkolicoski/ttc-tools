@@ -71,10 +71,10 @@ class YouTubeSightController extends Controller
                         'subscribers_lost' => $data[2],
                         'subscribers_count' => $data[1] - $data[2],
                         'estimated_minutes_watched' => $data[3],
-                        'average_view_duration' => (int)($data[4]/60) . ':' . $data[4]%60
+                        'average_view_duration' => (int)($data[4]/60) . ':' . (($data[4]%60) < 10 ? '0'.($data[4]%60) : $data[4]%60)
                     ]);
                 }
-                $data[4] = (int)($data[4]/60) . ':' . $data[4]%60;
+                $data[4] = (int)($data[4]/60) . ':' . (($data[4]%60) < 10 ? '0'.($data[4]%60) : $data[4]%60);
                 array_splice( $data, 3, 0, $data[1] - $data[2]);
                 return response(join(',', $data));
             }

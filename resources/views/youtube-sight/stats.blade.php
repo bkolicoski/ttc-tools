@@ -107,7 +107,7 @@
                     </div>
                     <div class="flex-1 text-right md:text-center">
                         <h5 class="font-bold uppercase text-gray-400">Avg. View Duration</h5>
-                        <h3 class="font-bold text-3xl text-gray-600">{{ (int)($data[4]/60) }}:{{ $data[4]%60 }}</h3>
+                        <h3 class="font-bold text-3xl text-gray-600">{{ (int)($data[4]/60) }}:{{ ($data[4]%60) < 10 ? '0'.($data[4]%60) : $data[4]%60 }}</h3>
                     </div>
                 </div>
             </div>
