@@ -65,14 +65,18 @@ class YouTubeSightController extends Controller
                 $channel->save();
                 $data = $this->getAnalyticsApiData($client, $channel);
                 if(request()->expectsJson()) {
-                    return response()->json([
+                    $result = [
                         'views' => $data[0],
                         'subscribers_gained' => $data[1],
                         'subscribers_lost' => $data[2],
                         'subscribers_count' => $data[1] - $data[2],
                         'estimated_minutes_watched' => $data[3],
-                        'average_view_duration' => (int)($data[4]/60) . ':' . (($data[4]%60) < 10 ? '0'.($data[4]%60) : $data[4]%60)
-                    ]);
+                        'average_view_duration' => (int)($data[4] / 60) . ':' . (($data[4] % 60) < 10 ? '0' . ($data[4] % 60) : $data[4] % 60)
+                    ];
+                    if (request()->has('include-data-stats')) {
+                        $result['data_statistics'] = $this->getDataApiData($client, $channel);
+                    }
+                    return response()->json($result);
                 }
                 $data[4] = (int)($data[4]/60) . ':' . (($data[4]%60) < 10 ? '0'.($data[4]%60) : $data[4]%60);
                 array_splice( $data, 3, 0, $data[1] - $data[2]);
@@ -214,4 +218,18 @@ class YouTubeSightController extends Controller
         ]);
         return $data->getRows()[0];
 }
+
+    private function getDataApiData(Google_Client $client, $channel)
+    {
+        $service = new Google_Service_YouTube($client);
+        $data = $service->channels->listChannels(
+            'id,statistics',
+            ['mine' => true]
+        )->getItems();
+        return [
+            'subscriber_count' => $data[0]['statistics']['subscriberCount'],
+            'video_count' => $data[0]['statistics']['videoCount'],
+            'views' => $data[0]['statistics']['viewCount']
+        ];
+    }
 }
