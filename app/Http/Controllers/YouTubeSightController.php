@@ -63,7 +63,9 @@ class YouTubeSightController extends Controller
             if (!isset($access_token['error'])) {
                 $channel['access_token'] = $access_token;
                 $channel->save();
-                $data = $this->getAnalyticsApiData($client, $channel);
+                $start_date = \request('start_date', null);
+                $end_date = \request('end_date', null);
+                $data = $this->getAnalyticsApiData($client, $channel, $start_date, $end_date);
                 if(request()->expectsJson()) {
                     $result = [
                         'views' => $data[0],
@@ -205,16 +207,40 @@ class YouTubeSightController extends Controller
      * @param \Google_Client $client
      * @param $channel
      *
+     * @param Carbon|null $start_date
+     * @param Carbon|null $end_date
      * @return array
      */
-    private function getAnalyticsApiData(Google_Client $client, $channel): array
-    {
+    private function getAnalyticsApiData(
+        Google_Client $client,
+        $channel,
+        ?string $start_date = null,
+        ?string $end_date = null
+    ): array {
+        if (!$start_date) {
+            $start_date = $channel['published_at'];
+        } else {
+            try {
+                $start_date = Carbon::parse($start_date);
+            } catch (\Exception $e) {
+                $start_date = $channel['published_at'];
+            }
+        }
+        if (!$end_date) {
+            $end_date = Carbon::now();
+        } else {
+            try {
+                $end_date = Carbon::parse($end_date);
+            } catch (\Exception $e) {
+                $end_date = Carbon::now();
+            }
+        }
         $youtube = new Google_Service_YouTubeAnalytics($client);
         $data = $youtube->reports->query([
             'ids' => 'channel==MINE',
             'metrics' => 'views,subscribersGained,subscribersLost,estimatedMinutesWatched,averageViewDuration',
-            'startDate' => $channel['published_at']->format('Y-m-d'),
-            'endDate' => Carbon::now()->format('Y-m-d')
+            'startDate' => $start_date->format('Y-m-d'),
+            'endDate' => $end_date->format('Y-m-d')
         ]);
         return $data->getRows()[0];
 }

@@ -116,7 +116,8 @@
 
         <div class="px-3 w-full mt-4">
             <div class="w-full mx-auto border rounded-lg bg-gray-600 p-4 text-white">
-                API Access URL: <span class="font-bold">{{ route('api.youtube-sight.index', ['guid' => $channel['api_access_key']])  }}</span>
+                API Access URL: <span class="font-bold">{{ route('api.youtube-sight.index', ['guid' => $channel['api_access_key']])  }}</span><br>
+                GUID: <span class="font-bold">{{ $channel['api_access_key'] }}</span>
             </div>
         </div>
 
@@ -130,18 +131,35 @@
             <p class="mb-4">The text response order of the parameters is as follows:<br>
                 views, subscribers_gained, subscribers_lost, subscribers_count, estimated_minutes_watched, average_view_duration
             </p>
+
+            <p class="mb-4">
+                There are three parameters that you can send to the API endpoint.
+                <dl>
+                    <dt class="font-bold">include-data-stats</dt>
+                    <dd class="pl-4">Boolean - if included, it adds the YouTube Data API statistics in the same request (rounded subscribers count, views and videos uploaded)</dd>
+                    <dt class="font-bold">start_date</dt>
+                    <dd class="pl-4">datetime - sets the start date from when to show data. If omitted or wrong format, the channel published date is used. It supports all of the <a href="https://www.php.net/manual/en/datetime.formats.php">standard PHP datetime formats</a></dd>
+                    <dt class="font-bold">end_date</dt>
+                    <dd class="pl-4">datetime - sets the end date till when to show data. If omitted or wrong format, the current date is used. It supports all of the <a href="https://www.php.net/manual/en/datetime.formats.php">standard PHP datetime formats</a></dd>
+                </dl>
+            </p>
         </div>
         <div class="w-full md:w-1/2 p-4 mt-4">
             <p>Text Response</p>
             <pre class="mb-4">57559,609,67,542,106322,1:50</pre>
             <p>JSON Response</p>
             <pre class="mb-4">{
-    "views": 57559,
-    "subscribers_gained": 609,
-    "subscribers_lost": 67,
-    "subscribers_count": 542,
-    "estimated_minutes_watched": 106322,
-    "average_view_duration": "1:50"
+    "views": 95857,
+    "subscribers_gained": 860,
+    "subscribers_lost": 99,
+    "subscribers_count": 761,
+    "estimated_minutes_watched": 174101,
+    "average_view_duration": "1:48",
+    "data_statistics": {
+        "subscriber_count": "763",
+        "video_count": "79",
+        "views": "96125"
+    }
 }</pre>
         </div>
 
