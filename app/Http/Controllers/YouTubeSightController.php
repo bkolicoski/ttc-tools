@@ -8,6 +8,7 @@ use Google_Client;
 use Google_Service_YouTube;
 use Google_Service_YouTubeAnalytics;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 
 class YouTubeSightController extends Controller
@@ -235,23 +236,29 @@ class YouTubeSightController extends Controller
                 $end_date = Carbon::now();
             }
         }
-        $youtube = new Google_Service_YouTubeAnalytics($client);
-        $data = $youtube->reports->query([
-            'ids' => 'channel==MINE',
-            'metrics' => 'views,subscribersGained,subscribersLost,estimatedMinutesWatched,averageViewDuration',
-            'startDate' => $start_date->format('Y-m-d'),
-            'endDate' => $end_date->format('Y-m-d')
-        ]);
+        $cache_key = 'analytics_' . $channel['channel_id'] . $start_date->format('Y-m-d') . $end_date->format('Y-m-d');
+        $data = Cache::remember($cache_key, 60, function () use ($client, $start_date, $end_date) {
+            $youtube = new Google_Service_YouTubeAnalytics($client);
+            return $youtube->reports->query([
+                'ids' => 'channel==MINE',
+                'metrics' => 'views,subscribersGained,subscribersLost,estimatedMinutesWatched,averageViewDuration',
+                'startDate' => $start_date->format('Y-m-d'),
+                'endDate' => $end_date->format('Y-m-d')
+            ]);
+        });
         return $data->getRows()[0];
 }
 
     private function getDataApiData(Google_Client $client, $channel)
     {
-        $service = new Google_Service_YouTube($client);
-        $data = $service->channels->listChannels(
-            'id,statistics',
-            ['mine' => true]
-        )->getItems();
+        $cache_key = 'data_analytics_' . $channel['channel_id'];
+        $data = Cache::remember($cache_key, 60, function () use ($client) {
+            $service = new Google_Service_YouTube($client);
+            return $service->channels->listChannels(
+                'id,statistics',
+                ['mine' => true]
+            )->getItems();
+        });
         return [
             'subscriber_count' => $data[0]['statistics']['subscriberCount'],
             'video_count' => $data[0]['statistics']['videoCount'],
