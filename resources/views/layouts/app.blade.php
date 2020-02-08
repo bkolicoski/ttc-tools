@@ -68,13 +68,19 @@
                         <i class="fab fa-youtube fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">YouTube Sight</span>
                     </a>
                 </li>
+                <li class="mr-6 my-2 md:my-0">
+                    <a href="{{ route('link-extractor.index') }}"
+                       class="block py-1 md:py-3 pl-1 align-middle no-underline hover:text-gray-100 border-b-2 {{ request()->routeIs('link-extractor.*') ? 'text-blue-400 border-blue-400' : 'text-gray-500 border-gray-900'  }}  hover:border-red-400">
+                        <i class="fa fa-link fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Link Extractor</span>
+                    </a>
+                </li>
             </ul>
         </div>
 
     </div>
 </nav>
 <div class="container w-full mx-auto pt-20">
-    <div class="w-full px-4 md:px-0 md:mt-8 mb-16 md:mb-40 text-gray-800 leading-normal">
+    <div class="w-full px-4 md:px-0 md:mt-8 mb-16 md:mb-40 text-gray-800 leading-normal" id="app">
         @yield('content')
     </div>
 </div>
@@ -188,5 +194,6 @@
 
 
 </script>
+<script type="text/javascript" src="/js/app.js"></script>
 </body>
 </html>
