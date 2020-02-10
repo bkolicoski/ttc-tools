@@ -23,3 +23,7 @@ Route::group(['as' => 'youtube-sight.', 'prefix' => 'youtube-sight'], function (
     Route::get('/auth', 'YouTubeSightController@auth')->name('auth');
     Route::get('/disconnect', 'YouTubeSightController@disconnect')->name('disconnect');
 });
+
+Route::group(['as' => 'link-extractor.', 'prefix' => 'link-extractor'], function () {
+    Route::get('/', 'LinkExtractorController@index')->name('index');
+});
