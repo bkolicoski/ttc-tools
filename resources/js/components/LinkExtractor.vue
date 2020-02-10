@@ -26,7 +26,7 @@
                 <textarea
                     name="input_text"
                     id="input_text"
-                    cols="30" rows="15"
+                    cols="30" rows="12"
                     class="w-full p-2 rounded-lg border-2 border-gray-400 outline-none"
                     v-model="input_text"
                     placeholder="Input text with links"
@@ -56,18 +56,7 @@
     export default {
         data () {
             return {
-                input_text: 'regexr.com\n' +
-                    'http://RegExr.com?2rjl6\n' +
-                    'gskinner.com\n' +
-                    'adobe.com/go/flex\n' +
-                    'gskinner.com/products/spl\n' +
-                    'https://google.com\n' +
-                    'https:google.com\n' +
-                    'www.cool.com.au\n' +
-                    'http://www.cool.com.au\n' +
-                    'http://www.cool.com.au/ersdfs\n' +
-                    'http://www.cool.com.au/ersdfs?dfd=dfgd@s=1\n' +
-                    'http://www.cool.com:81/index.html\n',
+                input_text: '',
                 match_mode: false,
                 links: null
             };
