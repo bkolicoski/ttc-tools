@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -30,5 +31,6 @@ class AppServiceProvider extends ServiceProvider
         if (App::environment('production') && !request()->is('api*') && !request()->isSecure()) {
             $url->forceScheme('https');
         }
+        Validator::extend('recaptcha', 'App\\Validators\\ReCaptcha@validate');
     }
 }

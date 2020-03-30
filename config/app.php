@@ -123,6 +123,9 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
+    'recaptcha_key' => env('GOOGLE_RECAPTCHA_KEY'),
+    'recaptcha_secret' => env('GOOGLE_RECAPTCHA_SECRET'),
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers

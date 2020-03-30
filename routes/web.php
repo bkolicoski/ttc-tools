@@ -24,6 +24,12 @@ Route::group(['as' => 'youtube-sight.', 'prefix' => 'youtube-sight'], function (
     Route::get('/disconnect', 'YouTubeSightController@disconnect')->name('disconnect');
 });
 
+Route::group(['as' => 'youtube-latest.', 'prefix' => 'youtube-latest'], function () {
+    Route::get('/', 'YouTubeLatestController@index')->name('index');
+    Route::post('/', 'YouTubeLatestController@store')->name('store');
+    Route::get('/r/{url}', 'YouTubeLatestController@redirect')->name('redirect');
+});
+
 Route::group(['as' => 'link-extractor.', 'prefix' => 'link-extractor'], function () {
     Route::get('/', 'LinkExtractorController@index')->name('index');
 });

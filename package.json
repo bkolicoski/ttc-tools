@@ -11,7 +11,6 @@
     },
     "devDependencies": {
         "@fullhuman/postcss-purgecss": "^2.1.0",
-        "axios": "^0.19.2",
         "cross-env": "^7.0.2",
         "laravel-mix": "^5.0.4",
         "laravel-mix-purgecss": "github:spatie/laravel-mix-purgecss",
@@ -24,6 +23,7 @@
     },
     "dependencies": {
         "tailwindcss": "^1.2.0",
-        "vue": "^2.6.11"
+        "vue": "^2.6.11",
+        "axios": "^0.19.2"
     }
 }
