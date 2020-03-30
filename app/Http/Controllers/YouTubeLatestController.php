@@ -48,7 +48,11 @@ class YouTubeLatestController extends Controller
         if ($link) {
             try {
                 $url = Cache::remember($url, 21600, function () use ($link) {
-                    $xml = simplexml_load_file('https://www.youtube.com/feeds/videos.xml?channel_id=' . $link['channel_id']);
+                    if (strlen($link['channel_id']) == 24 && substr( $link['channel_id'], 0, 2 ) === "UC") {
+                        $xml = simplexml_load_file('https://www.youtube.com/feeds/videos.xml?channel_id=' . $link['channel_id']);
+                    } else {
+                        $xml = simplexml_load_file('https://www.youtube.com/feeds/videos.xml?user=' . $link['channel_id']);
+                    }
                     return (string) $xml->entry->link['href'];
                 });
                 return redirect($url);
