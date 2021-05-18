@@ -50,6 +50,14 @@ class YouTubeSightController extends Controller
     }
 
     /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function terms()
+    {
+        return view('youtube-sight.terms');
+    }
+
+    /**
      * @param string $guid
      *
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
