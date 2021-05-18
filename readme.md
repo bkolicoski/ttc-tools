@@ -20,6 +20,9 @@ YouTube Sight is an application that connects with the YouTube Analytics API to 
 After the [announcement](https://support.google.com/youtube/thread/6543166?msgid=13119244) from YouTube that they will no longer provide real-time data for subscribers count and the [constatation](https://www.youtube.com/watch?v=sHNI-WgN-UQ) that all of the subscribers counters built will no longer work I’ve built this gateway that once you authorize it, it gives you an API endpoint that you can call from your project and retrieve the subscriber count. Check out the [examples repository](https://github.com/bkolicoski/youtube-sight-example) for examples on how you can use it.
 
 
+### [YouTube Latest Link](http://tools.tastethecode.com/youtube-latest)
+YouTube Latest Link is a tool that lets you generate a permanent URL to your latest video on YouTube. I built it so I can have a permanent URL on my Instagram profile that always takes people to my [latest video](https://tools.tastethecode.com/youtube-latest/r/latest). The tool is built as a Vue.js component with TailwindCSS. Feel free to generate and use as many links as you want.  
+
 ### [Link Extractor](https://tools.tastethecode.com/link-extractor)
 
 Link Extractor is a small tool that you can copy/paste some text or HTML and it will give you an extracted list of all the links so you can copy them elsewhere. The reason why I made it is to help me extract the links from the affiliates that I use that only allow for the entire ad HTML to be copied. As they say, scratch your own itch :D
