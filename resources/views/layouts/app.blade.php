@@ -40,7 +40,7 @@
                 </div>
                 <div class="block md:hidden pr-4">
                     <button id="nav-toggle"
-                            class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-100 hover:border-teal-500 appearance-none focus:outline-none">
+                            class="flex items-center px-3 py-2 border rounded text-gray-300 border-gray-600 hover:text-gray-100 hover:border-teal-500 appearance-none focus:outline-none">
                         <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>
                                 Menu</title>
                             <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
@@ -57,26 +57,26 @@
             <ul class="list-reset md:flex flex-1 items-center px-4 md:px-0">
                 <li class="mr-6 my-2 md:my-0">
                     <a href="/"
-                       class="block py-1 md:py-3 pl-1 align-middle no-underline hover:text-gray-100 border-b-2 {{ request()->is('/') ? 'text-blue-400 border-blue-400' : 'text-gray-500 border-gray-900'  }} hover:border-blue-400">
+                       class="block py-1 md:py-3 pl-1 align-middle no-underline hover:text-gray-100 border-b-2 {{ request()->is('/') ? 'text-blue-400 border-blue-400' : 'text-gray-300 border-gray-900'  }} hover:border-blue-400">
                         <i class="fas fa-home fa-fw mr-3"></i><span
                                 class="pb-1 md:pb-0 text-sm">Home</span>
                     </a>
                 </li>
                 <li class="mr-6 my-2 md:my-0">
                     <a href="{{ route('youtube-sight.index') }}"
-                       class="block py-1 md:py-3 pl-1 align-middle no-underline hover:text-gray-100 border-b-2 {{ request()->routeIs('youtube-sight.*') ? 'text-blue-400 border-blue-400' : 'text-gray-500 border-gray-900'  }}  hover:border-red-400">
+                       class="block py-1 md:py-3 pl-1 align-middle no-underline hover:text-gray-100 border-b-2 {{ request()->routeIs('youtube-sight.*') ? 'text-blue-400 border-blue-400' : 'text-gray-300 border-gray-900'  }}  hover:border-red-400">
                         <i class="fab fa-youtube fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">YouTube Sight</span>
                     </a>
                 </li>
                 <li class="mr-6 my-2 md:my-0">
                     <a href="{{ route('youtube-latest.index') }}"
-                       class="block py-1 md:py-3 pl-1 align-middle no-underline hover:text-gray-100 border-b-2 {{ request()->routeIs('youtube-latest.*') ? 'text-blue-400 border-blue-400' : 'text-gray-500 border-gray-900'  }}  hover:border-red-400">
+                       class="block py-1 md:py-3 pl-1 align-middle no-underline hover:text-gray-100 border-b-2 {{ request()->routeIs('youtube-latest.*') ? 'text-blue-400 border-blue-400' : 'text-gray-300 border-gray-900'  }}  hover:border-red-400">
                         <i class="fab fa-youtube fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">YouTube Latest</span>
                     </a>
                 </li>
                 <li class="mr-6 my-2 md:my-0">
                     <a href="{{ route('link-extractor.index') }}"
-                       class="block py-1 md:py-3 pl-1 align-middle no-underline hover:text-gray-100 border-b-2 {{ request()->routeIs('link-extractor.*') ? 'text-blue-400 border-blue-400' : 'text-gray-500 border-gray-900'  }}  hover:border-red-400">
+                       class="block py-1 md:py-3 pl-1 align-middle no-underline hover:text-gray-100 border-b-2 {{ request()->routeIs('link-extractor.*') ? 'text-blue-400 border-blue-400' : 'text-gray-300 border-gray-900'  }}  hover:border-red-400">
                         <i class="fa fa-link fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Link Extractor</span>
                     </a>
                 </li>

@@ -1,9 +1,9 @@
 require('./bootstrap');
 
-window.Vue = require('vue');
+import Vue from 'vue'
 
-Vue.component('link-extractor', require('./components/LinkExtractor').default);
-Vue.component('youtube-latest', require('./components/YouTubeLatest').default);
+Vue.component('link-extractor', require('./components/LinkExtractor.vue').default);
+Vue.component('youtube-latest', require('./components/YouTubeLatest.vue').default);
 
 const app = new Vue({
     el: '#app'

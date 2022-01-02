@@ -1,7 +1,7 @@
 <template>
     <div class="w-full lg:w-11/12 mx-auto mb-5 overflow-auto">
         <div class="w-full float-left pr-3">
-            <button class="block float-right px-2 py-1 border-2 rounded-lg hover:bg-blue-100 active:bg-blue-200 outline-none active:outline-none focus:outline-none" @click="copyAllLinks">
+            <button class="block float-right px-2 py-1 border-2 border-gray-300 rounded-lg hover:bg-blue-100 active:bg-blue-200 outline-none active:outline-none focus:outline-none" @click="copyAllLinks">
                 <i ref="copyAll" class="fas fa-copy"></i> Copy All
             </button>
             <div class="float-right mr-5 pt-2">
@@ -27,7 +27,7 @@
                     name="input_text"
                     id="input_text"
                     cols="30" rows="12"
-                    class="w-full p-2 rounded-lg border-2 border-gray-400 outline-none"
+                    class="w-full p-2 rounded-lg border-2 border-gray-300 outline-none"
                     v-model="input_text"
                     placeholder="Input text with links"
                 ></textarea>
@@ -36,12 +36,12 @@
                 <div v-if="links === null" class="w-full overflow-auto text-center">
                     There were no links identified in the text on the left.
                 </div>
-                <div v-else class="w-full pb-1 overflow-auto" v-for="(link, index) in links">
-                    <a :href="formatLink(link)" :title="link" target="_blank" class="block float-left w-11/12 p-1 bg-blue-100 rounded-lg border-2 truncate">
+                <div v-else class="w-full pb-1 overflow-auto" v-for="(link, index) in links" :key="'link_' + index">
+                    <a :href="formatLink(link)" :title="link" target="_blank" class="block float-left w-11/12 p-1 bg-blue-100 rounded-lg border-2 border-gray-300 truncate">
                         <span class="mx-1"><i class="fas fa-external-link-alt"></i></span>
                         {{ formatLink(link) }}
                     </a>
-                    <span class="block float-right border-2 px-2 py-1 rounded-lg hover:bg-blue-100 outline-none" @click="copySingleLink(index)">
+                    <span class="block float-right border-2 border-gray-300 px-2 py-1 rounded-lg hover:bg-blue-100 outline-none" @click="copySingleLink(index)">
                         <i :ref="'copy-icon-'+index" class="fas fa-copy"></i>
                     </span>
                 </div>
