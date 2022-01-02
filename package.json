@@ -24,6 +24,6 @@
     "dependencies": {
         "tailwindcss": "^1.2.0",
         "vue": "^2.6.11",
-        "axios": "^0.21.1"
+        "axios": "^0.21.2"
     }
 }
