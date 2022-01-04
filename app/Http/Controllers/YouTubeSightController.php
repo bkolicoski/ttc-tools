@@ -187,6 +187,7 @@ class YouTubeSightController extends Controller
         $client->setAuthConfig(base_path(config('services.google.credentials')));
         $client->setAccessType("offline");        // offline access
         $client->setIncludeGrantedScopes(true);   // incremental auth
+        $client->setPrompt("consent");
         $client->addScope(Google_Service_YouTubeAnalytics::YT_ANALYTICS_READONLY);
         $client->addScope(Google_Service_YouTube::YOUTUBE_READONLY);
         $client->setRedirectUri(route('youtube-sight.auth'));
