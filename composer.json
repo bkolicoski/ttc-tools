@@ -9,19 +9,18 @@
     "license": "MIT",
     "require": {
         "php": "^8.0",
-        "fideloper/proxy": "^4.0",
         "google/apiclient": "^2.0",
-        "laravel/framework": "^8.0",
+        "laravel/framework": "^9.0",
         "laravel/tinker": "^2.0",
         "monolog/monolog": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "ext-simplexml": "*"
     },
     "require-dev": {
-        "facade/ignition": "^2.3.6",
+        "spatie/laravel-ignition": "^1.0",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
-        "nunomaduro/collision": "^5.0",
+        "nunomaduro/collision": "^6.1",
         "phpunit/phpunit": "^9.0"
     },
     "config": {
