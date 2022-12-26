@@ -28,7 +28,7 @@
             <i class="fab fa-patreon"></i> Become a Patron
         </button>
         <button class="px-2 py-1 border-2 rounded-lg hover:bg-blue-100 active:bg-blue-200 outline-none active:outline-none focus:outline-none" onclick="window.location.href = 'https://www.paypal.com/paypalme2/bkolicoski'">
-            <i class="fas fa-beer"></i> Buy me a beer
+            <i class="fas fa-beer"></i> Donate
         </button>
         <button class="px-2 py-1 border-2 rounded-lg hover:bg-blue-100 active:bg-blue-200 outline-none active:outline-none focus:outline-none" onclick="window.location.href = 'https://www.dreamhost.com/r.cgi?2405711/promo/dreamsavings50/'">
             <i class="fas fa-server"></i> $50 off Hosting

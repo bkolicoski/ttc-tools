@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('title')
-    YouTube Latest - Get permanent link to your latest video - Taste The Code Toolbox
+    YouTube Playlist First - Get permanent link to your first video in a playlist - Taste The Code Toolbox
 @endsection
 
 @section('content')
     <div class="w-full lg:w-11/12  mx-auto">
-        <p class="mb-4 p-3">YouTube Latest is a tool that creates a permanent link to your latest YouTube video. All you need to do is paste your YouTube channel ID in the field below and enter your preferred URL.</p>
+        <p class="mb-4 p-3">YouTube Playlist First is a tool that creates a permanent link to the first (top) video inside a YouTube playlist. All you need to do is paste your YouTube playlist ID in the field below and enter your preferred URL.</p>
+        <p class="mb-4 p-3">Because of how YouTube works and how this tools works, this tool is best used when newly added videos in the playlist are listed on the top of the playlist.</p>
 
         @if (session('error'))
             <div class="bg-red-200 my-6">
@@ -20,7 +21,7 @@
         @endif
 
     </div>
-    <youtube-latest recaptcha_key="{{ config('app.recaptcha_key') }}"></youtube-latest>
+    <youtube-playlist-latest recaptcha_key="{{ config('app.recaptcha_key') }}"></youtube-playlist-latest>
 
 
     <p class="mb-4 p-3">This tool is provided free of charge and its code can be found together with the rest of my tools on the <a  class="text-blue-400 hover:text-blue-600" href="https://github.com/bkolicoski/ttc-tools">GitHub repo</a>. However, hosting costs me money and for that, any donation is more than welcomed. </p>

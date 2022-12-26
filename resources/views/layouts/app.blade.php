@@ -75,6 +75,12 @@
                     </a>
                 </li>
                 <li class="mr-6 my-2 md:my-0">
+                    <a href="{{ route('youtube-playlist-latest.index') }}"
+                       class="block py-1 md:py-3 pl-1 align-middle no-underline hover:text-gray-100 border-b-2 {{ request()->routeIs('youtube-playlist-latest.*') ? 'text-blue-400 border-blue-400' : 'text-gray-300 border-gray-900'  }}  hover:border-red-400">
+                        <i class="fab fa-youtube fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">YouTube Playlist First</span>
+                    </a>
+                </li>
+                <li class="mr-6 my-2 md:my-0">
                     <a href="{{ route('link-extractor.index') }}"
                        class="block py-1 md:py-3 pl-1 align-middle no-underline hover:text-gray-100 border-b-2 {{ request()->routeIs('link-extractor.*') ? 'text-blue-400 border-blue-400' : 'text-gray-300 border-gray-900'  }}  hover:border-red-400">
                         <i class="fa fa-link fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Link Extractor</span>

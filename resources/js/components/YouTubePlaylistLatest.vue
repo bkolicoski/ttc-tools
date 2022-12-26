@@ -4,16 +4,16 @@
             <div class="w-full md:w-1/3 flex-1 p-3">
                 <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                     <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="channel_id">
-                            YouTube Channel ID
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="playlist_id">
+                            YouTube Playlist ID
                         </label>
-                        <input v-model="form.channel_id"
+                        <input v-model="form.playlist_id"
                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                               :class="errors.channel_id ? 'border-red-500' : ''"
-                               id="channel_id"
+                               :class="errors.playlist_id ? 'border-red-500' : ''"
+                               id="playlist_id"
                                type="text"
-                               placeholder="UCSmcxKaBEGjnwMgLIZkL_OA">
-                        <p v-if="errors.channel_id" class="text-red-500 text-xs italic">{{ errors.channel_id[0] }}</p>
+                               placeholder="PLfwpK3RIxFR1QFE-IgRQ2TJwasALevqsM">
+                        <p v-if="errors.playlist_id" class="text-red-500 text-xs italic">{{ errors.playlist_id[0] }}</p>
                     </div>
                     <div class="mb-6">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="url">
@@ -58,7 +58,7 @@
         data () {
             return {
                 form: {
-                    channel_id: null,
+                    playlist_id: null,
                     url: null,
                     token: null
                 },
@@ -73,7 +73,7 @@
                 const instance = this;
                 grecaptcha.execute(this.recaptcha_key, {action: 'create_link'}).then(function(token) {
                     instance.form.token = token;
-                    axios.post('/youtube-latest', instance.form)
+                    axios.post('/youtube-playlist-latest', instance.form)
                     .then(response => {
                         instance.links = response.data.links;
                     })

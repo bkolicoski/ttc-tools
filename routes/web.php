@@ -31,6 +31,12 @@ Route::group(['as' => 'youtube-latest.', 'prefix' => 'youtube-latest'], function
     Route::get('/r/{url}', 'YouTubeLatestController@redirect')->name('redirect');
 });
 
+Route::group(['as' => 'youtube-playlist-latest.', 'prefix' => 'youtube-playlist-latest'], function () {
+    Route::get('/', 'YouTubePlaylistLatestController@index')->name('index');
+    Route::post('/', 'YouTubePlaylistLatestController@store')->name('store');
+    Route::get('/rp/{url}', 'YouTubePlaylistLatestController@redirect')->name('redirect');
+});
+
 Route::group(['as' => 'link-extractor.', 'prefix' => 'link-extractor'], function () {
     Route::get('/', 'LinkExtractorController@index')->name('index');
 });
