@@ -7,7 +7,7 @@
 @section('content')
     <div class="w-full lg:w-11/12  mx-auto">
         <p class="mb-4 p-3">YouTube Playlist First is a tool that creates a permanent link to the first (top) video inside a YouTube playlist. All you need to do is paste your YouTube playlist ID in the field below and enter your preferred URL.</p>
-        <p class="mb-4 p-3">Because of how YouTube works and how this tools works, this tool is best used when newly added videos in the playlist are listed on the top of the playlist.</p>
+        <p class="mb-4 p-3">Because of how YouTube and this tool works, this tool is best used when newly added videos in the playlist are listed on the top of the playlist.</p>
 
         @if (session('error'))
             <div class="bg-red-200 my-6">

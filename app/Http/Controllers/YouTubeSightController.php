@@ -246,32 +246,35 @@ class YouTubeSightController extends Controller
             }
         }
         $cache_key = 'analytics_' . $channel['channel_id'] . $start_date->format('Y-m-d') . $end_date->format('Y-m-d');
-        $data = Cache::remember($cache_key, 60, function () use ($client, $start_date, $end_date) {
+        // Cache the plain result row instead of the response object, so the
+        // cache never has to unserialize arbitrary classes.
+        return Cache::remember($cache_key, 60, function () use ($client, $start_date, $end_date) {
             $youtube = new Google_Service_YouTubeAnalytics($client);
             return $youtube->reports->query([
                 'ids' => 'channel==MINE',
                 'metrics' => 'views,subscribersGained,subscribersLost,estimatedMinutesWatched,averageViewDuration',
                 'startDate' => $start_date->format('Y-m-d'),
                 'endDate' => $end_date->format('Y-m-d')
-            ]);
+            ])->getRows()[0];
         });
-        return $data->getRows()[0];
 }
 
     private function getDataApiData(Google_Client $client, $channel)
     {
         $cache_key = 'data_analytics_' . $channel['channel_id'];
-        $data = Cache::remember($cache_key, 60, function () use ($client) {
+        // Cache the extracted values instead of the Google channel objects, so
+        // the cache never has to unserialize arbitrary classes.
+        return Cache::remember($cache_key, 60, function () use ($client) {
             $service = new Google_Service_YouTube($client);
-            return $service->channels->listChannels(
+            $data = $service->channels->listChannels(
                 'id,statistics',
                 ['mine' => true]
             )->getItems();
+            return [
+                'subscriber_count' => $data[0]['statistics']['subscriberCount'],
+                'video_count' => $data[0]['statistics']['videoCount'],
+                'views' => $data[0]['statistics']['viewCount']
+            ];
         });
-        return [
-            'subscriber_count' => $data[0]['statistics']['subscriberCount'],
-            'video_count' => $data[0]['statistics']['videoCount'],
-            'views' => $data[0]['statistics']['viewCount']
-        ];
     }
 }

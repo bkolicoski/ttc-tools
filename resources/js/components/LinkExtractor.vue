@@ -95,7 +95,7 @@
             },
             copySingleLink (index) {
                 this.copyString(this.links[index]);
-                const el = this.$refs['copy-icon-'+index][0];
+                const el = this.$refs['copy-icon-'+index];
                 this.switchFeedbackIcon(el);
             },
             switchFeedbackIcon (el) {

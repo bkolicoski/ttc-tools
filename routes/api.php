@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\YouTubeSightController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['scheme' => 'http', 'middleware' => 'throttle:30,1'], function () {
     Route::group(['as' => 'api.youtube-sight.', 'prefix' => 'youtube-sight'], function () {
-        Route::get('/{guid}', 'YouTubeSightController@apiIndex')->name('index');
+        Route::get('/{guid}', [YouTubeSightController::class, 'apiIndex'])->name('index');
     });
 });

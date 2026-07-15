@@ -52,7 +52,7 @@
     </div>
 </template>
 <script>
-    const axios = require('axios').default;
+    import axios from 'axios';
     export default {
         props: { recaptcha_key: String },
         data () {
@@ -95,7 +95,7 @@
             },
             copySingleLink (index) {
                 this.copyString(this.links[index].full_url);
-                const el = this.$refs['copy-icon-'+index][0];
+                const el = this.$refs['copy-icon-'+index];
                 this.switchFeedbackIcon(el);
             },
             switchFeedbackIcon (el) {
