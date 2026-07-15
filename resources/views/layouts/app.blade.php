@@ -19,7 +19,7 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 </head>
 <body class="bg-gray-200 font-sans leading-normal tracking-normal">
@@ -207,6 +207,5 @@
 
 
 </script>
-<script type="text/javascript" src="/js/app.js"></script>
 </body>
 </html>

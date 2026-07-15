@@ -1,11 +1,13 @@
-require('./bootstrap');
+import './bootstrap';
 
-import Vue from 'vue'
+import { createApp } from 'vue';
 
-Vue.component('link-extractor', require('./components/LinkExtractor.vue').default);
-Vue.component('youtube-latest', require('./components/YouTubeLatest.vue').default);
-Vue.component('youtube-playlist-latest', require('./components/YouTubePlaylistLatest.vue').default);
+import LinkExtractor from './components/LinkExtractor.vue';
+import YouTubeLatest from './components/YouTubeLatest.vue';
+import YouTubePlaylistLatest from './components/YouTubePlaylistLatest.vue';
 
-const app = new Vue({
-    el: '#app'
-});
+createApp({})
+    .component('link-extractor', LinkExtractor)
+    .component('youtube-latest', YouTubeLatest)
+    .component('youtube-playlist-latest', YouTubePlaylistLatest)
+    .mount('#app');

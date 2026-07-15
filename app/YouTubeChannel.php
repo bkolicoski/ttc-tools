@@ -8,7 +8,8 @@ class YouTubeChannel extends Model
 {
     protected $table = 'youtube_sight';
 
-    protected $casts = ['access_token' => 'array'];
-
-    protected $dates = ['published_at'];
+    protected $casts = [
+        'access_token' => 'array',
+        'published_at' => 'datetime',
+    ];
 }
